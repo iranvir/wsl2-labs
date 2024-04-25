@@ -15,6 +15,7 @@ if(!(Test-Path -PathType Container C:\WSL2))
 {
     New-Item -ItemType Directory -Path C:\WSL2
 }
+
 # OS setup
 wsl.exe --import $Name C:\WSL2\$Name $Rootfs
 wsl.exe --distribution $Name ./setup.sh

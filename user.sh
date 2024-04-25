@@ -1,5 +1,4 @@
 #!/bin/sh
-set -x
 set -e
 if [ -n "${HOME}" ] ; then
     cd "${HOME}"
