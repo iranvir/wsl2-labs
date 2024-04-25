@@ -1,4 +1,5 @@
 #!/bin/sh
+set -x
 set -e
 . /etc/os-release
 
@@ -16,10 +17,10 @@ if [ "${ID}" = 'rocky' ] ; then
 fi
 
 if [ "${ID}" = 'ubuntu' ] ; then
-    apt update --quiet --yes
-    apt upgrade --quiet --yes
-    apt purge show-motd update-motd snapd openssh-client openssh-server cloud-init git python3 --quiet --yes
-    apt autoremove --purge --quiet --yes
+    apt-get update --quiet --yes
+    apt-get upgrade --quiet --yes
+    apt-get purge show-motd update-motd snapd openssh-client openssh-server cloud-init git python3 --quiet --yes
+    apt-get autoremove --purge --quiet --yes
 fi
 
 cat << EOF > /etc/wsl.conf
@@ -34,6 +35,8 @@ enabled=true
 mountFsTab=false
 EOF
 
-rm -rf /etc/cloud /var/lib/cloud /etc/profile* /etc/bash* /etc/skel /etc/rc*     /etc/sudoers.d /etc/python* /etc/update-motd*
+rm -rf /bin.usr-is-merged /lib.usr-is-merged /sbin.usr-is-merged \
+    /etc/resolv.conf /etc/cloud /etc/profile* /etc/bash* /etc/skel /etc/rc* /etc/sudoers.d /etc/python* /etc/update-motd* /etc/ubuntu-advantage \
+    /var/lib/cloud /usr/lib/python3/dist-packages /var/lib/command-not-found \
 
 exit 0

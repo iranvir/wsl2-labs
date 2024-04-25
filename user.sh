@@ -1,6 +1,6 @@
 #!/bin/sh
+set -x
 set -e
-
 if [ -n "${HOME}" ] ; then
     cd "${HOME}"
     rm -fr -- ..?* .[!.]* *
@@ -39,6 +39,6 @@ EOF
 chmod 700 "${HOME}"/.ssh
 chmod 400 "${HOME}"/.ssh/id_ed25519 "${HOME}"/.ssh/id_ed25519.pub
 chmod 600 "${HOME}"/.ssh/config
-rm -f "${HOME}"/.ssh/config/known_hosts*
+rm -f "${HOME}"/.ssh/known_hosts*
 
 exit 0
