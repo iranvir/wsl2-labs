@@ -18,7 +18,7 @@ fi
 if [ "${ID}" = 'ubuntu' ] ; then
     apt-get update --quiet --yes
     apt-get upgrade --quiet --yes
-    apt-get purge show-motd update-motd snapd openssh-client openssh-server cloud-init git python3 --quiet --yes
+    apt-get purge show-motd update-motd snapd openssh-client openssh-server cloud-init git python3 systemd-resolved --quiet --yes
     apt-get autoremove --purge --quiet --yes
 fi
 
