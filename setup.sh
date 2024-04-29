@@ -5,8 +5,8 @@ set -e
 if [ "${ID}" = 'alpine' ] ; then
     sed -i 's/v[0-9]*\.[0-9]*/edge/g' /etc/apk/repositories
     sed -i '$ahttps://dl-cdn.alpinelinux.org/alpine/edge/testing' /etc/apk/repositories
-    apk -U upgrade
-    apk add sudo
+    apk -U --no-cache upgrade
+    apk --no-cache add sudo
 fi
 
 if [ "${ID}" = 'rocky' ] ; then
