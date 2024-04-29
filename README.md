@@ -9,39 +9,45 @@
 >       * Ubuntu 22.04 and 24.04
 >       * Alpine Linux 3.19
 >       * RockyLinux 9.3
+> 4. `user.sh` has some hardcoded values like `/mnt/c/Users/ranvir` please
+>    replace those with your home directory on Windows. Which would look like
+>    `/mnt/c/Users/<windows_user_name>` from the perspective of WSL2.
 
 # Purpose of this project
-Spin as many Linux WSL2 instances as I want without any of the junk most distros
-have. Said junk may or may not be mission critical. Please don't run it
-blindly!!
+Setting up WSL2 is time consuming. The defaults are not what I want, the shell
+is not correctly setup. Sometimes I want `root` to be default user. Sometimes I
+want to create a different non-root user, and on and on....
 
 I also want to override a lot of the defaults that Microsoft and Distro
-maintainers have, but instead of manually editing `wsl.conf` everytime I
-setup a new instance, I automated everything in these scripts. This gives me the
-freedom to experiment more freely within my WSL2 environment without the fear of
-losing time if I have to start over again. 
-
-As the name suggests, this is `WSL2 Labs` we can break things here, not in production ;)
+maintainers provide. These scripts automate all of that preferences. This gives
+me the freedom to experiment more freely within a WSL2 environment. If I break
+something, it just takes one command to start again with a clean slate!
 
 I also wanted to dip into PowerShell Scripting and Windows Automation, so if you
 see a better way of doing something that I am trying to accomplish, please let
-me know either by raising a PR, starting an issue or just writing me an email.
+me know either by raising a PR, starting an issue, or just write me an email.
 
 # How to use these scripts?
+
 1. Clone this repo
+
 2. Download the rootfs of the operating system you want, or if you cannot find
-   the rootfs you docker export.
+   the rootfs try using [this `docker export`
+   method](https://learn.microsoft.com/en-us/windows/wsl/use-custom-distro) to
+   generate it
+
 3. Create a `rootfs/` directory at the root of this repo and put the compressed
    rootfs in there.
+
 4. Review (or rewrite) `setup.sh` and `user.sh` to fit your needs. These are
    simple POSIX shell scripts and very easy to modify to do your bidding. It has
-   some hard coded values like my GitHub username and Windows username hardcoded
-   in it.
-4. Run `.\setup.ps1` with flags as described below:
+   some hard coded values like my GitHub username and Windows username so you
+   may want to replace those.
 
+5. Run `.\setup.ps1` with flags as described below:
     `.\setup.ps1 -Name NAME_FOR_YOUR_DISTRO -Rootfs PATH_TO_ROOTFS -UserName USER_NAME -EnableSystemd $false -IsAlpine $true`
 
-    A. If `-Rootfs` is the path to the compressed rootfs of the distro you want to
+    * If `-Rootfs` is the path to the compressed rootfs of the distro you want to
     install. If you don't have a compressed rootfs here is where you can get it:
         * Link for [RockyLinux 8 and
         9](https://docs.rockylinux.org/guides/interoperability/import_rocky_to_wsl/).
@@ -51,20 +57,21 @@ me know either by raising a PR, starting an issue or just writing me an email.
         * Link for [Alpine Rootfs](https://alpinelinux.org/downloads/). You would
         want the "Mini Root Filesystem" labeled "x86_64"
 
-    B. Set `-Name` to whatever you want to call that particular WSL2 instance. Could
+    * Set `-Name` to whatever you want to call that particular WSL2 instance. Could
     be a project name or whatever.
 
-    C. Supply `-UserName` which will be your primary Unix user within this WSL2
+    * Supply `-UserName` which will be your primary Unix user within this WSL2
     instance. If this option is left out, you will drop in directly as root user.
     If you supply a username, it will automatically become a sudo user without
     any password. The user can change this later in the settings.  
 
-    D. `-IsAlpine` is just a special case check for Alpine Linux since it doesn't
+    * `-IsAlpine` is just a special case check for Alpine Linux since it doesn't
     support `useradd` command and also doesn't support systemd (kinda). Default
     is false. Set `-IsAlpine = $true` if you are using it.
 
-    E. `-EnableSystemd = $false` flag disables systemd and you only use WSL2's init
+    * `-EnableSystemd = $false` flag disables systemd and you only use WSL2's init
     and that's it. The default is `$true` which starts systemd and dependant
     services.
 
-5. If you cannot find rootfs for your distro (I am looking at you Fedora!) then please try using [this `docker export` method](https://learn.microsoft.com/en-us/windows/wsl/use-custom-distro).
+# Plans
+1. Will whip up a script to take a snapshot of a distro and back it up.
