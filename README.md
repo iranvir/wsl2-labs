@@ -11,9 +11,17 @@
 >       * RockyLinux 9.3
 
 # Purpose of this project
-Spin as many Linux WSL2 instances as I want without any of the **junk** most
-distros have. Said **junk** may or may not be mission critical. Please don't run
-it blindly!!
+Spin as many Linux WSL2 instances as I want without any of the junk most distros
+have. Said junk may or may not be mission critical. Please don't run it
+blindly!!
+
+I also want to override a lot of the defaults that Microsoft and Distro
+maintainers have, but instead of manually editing `wsl.conf` everytime I
+setup a new instance, I automated everything in these scripts. This gives me the
+freedom to experiment more freely within my WSL2 environment without the fear of
+losing time if I have to start over again. 
+
+As the name suggests, this is `WSL2 Labs` we can break things here, not in production ;)
 
 I also wanted to dip into PowerShell Scripting and Windows Automation, so if you
 see a better way of doing something that I am trying to accomplish, please let
@@ -26,7 +34,9 @@ me know either by raising a PR, starting an issue or just writing me an email.
 3. Create a `rootfs/` directory at the root of this repo and put the compressed
    rootfs in there.
 4. Review (or rewrite) `setup.sh` and `user.sh` to fit your needs. These are
-   simple POSIX shell scripts and very easy to modify to do your bidding.
+   simple POSIX shell scripts and very easy to modify to do your bidding. It has
+   some hard coded values like my GitHub username and Windows username hardcoded
+   in it.
 4. Run `.\setup.ps1` with flags as described below:
 
     `.\setup.ps1 -Name NAME_FOR_YOUR_DISTRO -Rootfs PATH_TO_ROOTFS -UserName USER_NAME -EnableSystemd $false -IsAlpine $true`
