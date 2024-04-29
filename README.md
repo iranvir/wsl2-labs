@@ -75,5 +75,5 @@ email.
     and that's it. The default is `$true` which starts systemd and dependant
     services.
 
-# Plans
+# Future Plans
 1. Will whip up a script to take a snapshot of a distro and back it up.
