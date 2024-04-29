@@ -19,13 +19,15 @@ is not correctly setup. Sometimes I want `root` to be default user. Sometimes I
 want to create a different non-root user, and on and on....
 
 I also want to override a lot of the defaults that Microsoft and Distro
-maintainers provide. These scripts automate all of that preferences. This gives
+maintainers provide. These scripts automate all of my preferences. This gives
 me the freedom to experiment more freely within a WSL2 environment. If I break
 something, it just takes one command to start again with a clean slate!
+(I know we have Docker and Dockerfile, but where's the fun in that!)
 
-I also wanted to dip into PowerShell Scripting and Windows Automation, so if you
-see a better way of doing something that I am trying to accomplish, please let
-me know either by raising a PR, starting an issue, or just write me an email.
+I also want to learn more about PowerShell scripting and Windows Automation, so
+if you see a better way of doing something that I am trying to do here, please
+let me know either by raising a PR, starting an issue, or just write me an
+email.
 
 # How to use these scripts?
 
