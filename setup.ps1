@@ -11,13 +11,13 @@ Param (
     [bool]$IsAlpine = $false
 )
 
-if(!(Test-Path -PathType Container C:\WSL2))
+if(!(Test-Path -PathType Container C:\sw\WSL2))
 {
-    New-Item -ItemType Directory -Path C:\WSL2
+    New-Item -ItemType Directory -Path C:\sw\WSL2
 }
 
 # OS setup
-wsl.exe --import $Name C:\WSL2\$Name $Rootfs
+wsl.exe --import $Name C:\sw\WSL2\$Name $Rootfs
 wsl.exe --distribution $Name ./setup.sh
 if ( $EnableSystemd -And !($IsAlpine))
 {
@@ -45,8 +45,8 @@ wsl.exe --distribution $Name --user $UserName ./user.sh
 # Reduce space consumption
 wsl.exe --distribution $Name --user root fstrim /
 wsl.exe --shutdown
-wsl.exe --export $Name C:\WSL2\$Name\$Name.tar
+wsl.exe --export $Name C:\sw\WSL2\$Name\$Name.tar
 wsl.exe --unregister $Name
-wsl.exe --import $Name C:\WSL2\$Name C:\WSL2\$Name\$Name.tar
-Remove-Item C:\WSL2\$Name\$Name.tar
+wsl.exe --import $Name C:\sw\WSL2\$Name C:\sw\WSL2\$Name\$Name.tar
+Remove-Item C:\sw\WSL2\$Name\$Name.tar
 exit
