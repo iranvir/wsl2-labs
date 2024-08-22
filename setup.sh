@@ -11,7 +11,8 @@ fi
 
 if [ "${ID}" = 'rocky' ] ; then
     dnf update --assumeyes --quiet
-    dnf install coreutils systemd ncurses procps-ng openssh-clients vim sudo which --allowerasing --assumeyes --quiet
+    dnf install coreutils systemd ncurses procps-ng openssh-clients vim sudo which epel-release tmux rsync git glibc-langpack-en-2.34-100.el9_4.2.x86_64 --allowerasing --assumeyes --quiet
+    dnf install htop hwloc
     dnf clean all --assumeyes --quiet
 fi
 
