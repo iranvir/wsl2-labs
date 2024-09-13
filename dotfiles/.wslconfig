@@ -1,0 +1,6 @@
+[wsl2]
+swap = 0
+memory = 16G
+guiApplications = false
+networkingMode = NAT
+nestedVirtualization = true

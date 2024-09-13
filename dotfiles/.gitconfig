@@ -1,0 +1,8 @@
+[core]
+    sshCommand = 'C:\\Windows\\System32\\OpenSSH\\ssh.exe'
+    autocrlf = false
+[user]
+    name = Ranvir Singh
+    email = ranvir@numbersandreality.com
+[init]
+    defaultBranch = main
