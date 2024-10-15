@@ -11,9 +11,17 @@ fi
 
 if [ "${ID}" = 'rocky' ] ; then
     dnf update --assumeyes --quiet
-    dnf install coreutils systemd ncurses procps-ng openssh-clients vim sudo which epel-release tmux rsync git glibc-langpack-en --allowerasing --assumeyes --quiet
-    dnf install htop hwloc
+    dnf install coreutils systemd ncurses procps-ng openssh-clients vim sudo which epel-release tmux rsync git glibc-langpack-en iputils --allowerasing --assumeyes --quiet
+    dnf install htop hwloc --assumeyes --quiet
     dnf clean all --assumeyes --quiet
+fi
+
+if [ "${ID}" = 'fedora' ] ; then
+    dnf update --assumeyes --quiet
+    dnf install coreutils systemd ncurses procps-ng openssh-clients vim sudo which tmux rsync git glibc-langpack-en iputils --allowerasing --assumeyes --quiet
+    dnf install htop hwloc --assumeyes --quiet
+    dnf clean all --assumeyes --quiet
+    systemctl disable --now systemd-resolved
 fi
 
 if [ "${ID}" = 'ubuntu' ] ; then
@@ -37,6 +45,6 @@ EOF
 
 rm -rf /bin.usr-is-merged /lib.usr-is-merged /sbin.usr-is-merged \
     /etc/resolv.conf /etc/cloud /etc/profile* /etc/bash* /etc/skel /etc/rc* /etc/sudoers.d /etc/python* /etc/update-motd* /etc/ubuntu-advantage \
-    /var/lib/cloud /usr/lib/python3/dist-packages /var/lib/command-not-found \
+    /var/lib/cloud /usr/lib/python3/dist-packages /var/lib/command-not-found
 
 exit 0
