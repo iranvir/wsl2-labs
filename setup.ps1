@@ -6,9 +6,9 @@ Param (
     [Parameter()]
     [string]$UserName = 'root',
     [Parameter()]
-    [bool]$EnableSystemd = $true,
+    [switch]$EnableSystemd = $false,
     [Parameter()]
-    [bool]$IsAlpine = $false
+    [switch]$IsAlpine = $false
 )
 
 if(!(Test-Path -PathType Container C:\sw\WSL2))
