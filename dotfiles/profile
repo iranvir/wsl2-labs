@@ -1,0 +1,4 @@
+alias ls="ls --color=always"
+alias ll="ls -a --color=always"
+alias pp="source ./.venv/bin/activate"
+export PS1="\[\e[36;40m\]\h\[\e[m\]:\[\e[35;40m\]\w\[\e[m\] $ "
