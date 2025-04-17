@@ -2,4 +2,4 @@
     name = Ranvir Singh
     email = ranvir@numbersandreality.com
 [init]
-    defaultBranch = main
+    defaultBranch = master
