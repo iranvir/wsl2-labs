@@ -1,2 +1,3 @@
 syntax on
+set shortmess=I
 set viminfofile=NONE
